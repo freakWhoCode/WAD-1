@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>AJAX communication</h1>
+    <div class="body">
+        <div class="box">
+            <div class="title">
+                <h2>Non-AJAX Section</h2>
+            </div>
+            <div id="xyz"> 
+                <button type="button" onclick="show()"> Click Me</button>
+            </div>
+    
+    
+        </div>
+    
+        <div class="box">
+           <div class="title"> <h2>AJAX Section</h2></div>
+        <div id="abcd">
+            <img src="" alt="" id="image">
+            <button type="button" onclick="display()" id="btn">Request </button>
+    
+        </div>
+    
+        </div>
+    </div>
+    
+
+    
+
+
+
+    <script>
+
+
+        let image = document.getElementById("image");
+        let button = document.getElementById("btn");
+
+        function show() {
+            document.write("Clicked")
+            //document.getElementById("xyz").innerHTML="Event Response generated"
+
+        }
+        function display() {
+            // document.write("Display")
+            var req = new XMLHttpRequest()
+            req.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // document.getElementById("abcd").innerHTML = "";
+                    btn.style.display="none"; 
+                    image.src = this.responseText;
+                }
+            }
+            req.open('GET', 'data.txt', true) /* open method to open connection to server with request   for a file 'data.txt' using GET method*/
+            req.send() /* send request to server*/
+        }
+
+
+    </script>
+</body>
+
+</html>
